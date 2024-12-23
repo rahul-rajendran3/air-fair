@@ -1,0 +1,9 @@
+node_modules/
+.next/
+backend/test/bin/
+backend/test/include/
+backend/test/lib/
+.env
+.venv
+Lib/site-packages/
+Scripts/
