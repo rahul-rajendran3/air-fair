@@ -45,13 +45,13 @@ const Summary = () => {
 
       console.log("Fetching Response");
 
-      const response = await axios.get(
-        `http://127.0.0.1:3000/getavgpricing/${originAirport}/${destinationAirport}/${departDate}/${returnDate}`
-      );
+      // const response = await axios.get(
+      //   `http://127.0.0.1:3000/getavgpricing/${originAirport}/${destinationAirport}/${departDate}/${returnDate}`
+      // );
 
-        const results = response.data.response;
+      //   const results = response.data.response;
 
-      setComp(results);
+      // setComp(results);
       
     };
 
@@ -74,13 +74,7 @@ const Summary = () => {
               <div className="font-medium">Price: ${selectedDepart.price}</div>
             </>
           </Widget>
-          <Widget
-            iconSrc="/icons/arrival-plane.svg"
-            title="Returning"
-            height={120}
-            width={120}
-            className="relative bottom-6"
-          >
+          <Widget iconSrc="/icons/arrival-plane.svg" title="Returning">
             <>
               <div>Locations: {selectedArrival.airports}</div>
               <div className="whitespace-nowrap">Date: {selectedArrival.date} {selectedArrival.departureTime}</div>
@@ -88,11 +82,11 @@ const Summary = () => {
               <div className="font-medium">Price: ${selectedArrival.price}</div>
             </>
           </Widget>
-          <Widget iconSrc="/icons/dollar.svg" title="Competitor Prices" className="col-span-2">
+          {/* <Widget iconSrc="/icons/dollar.svg" title="Competitor Prices" className="col-span-2">
             <>
               <div className="font-normal" dangerouslySetInnerHTML={{ __html: formattedComp }}></div>
             </>
-          </Widget>
+          </Widget> */}
 
         </div>
             

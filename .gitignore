@@ -1,9 +1,8 @@
 node_modules/
 .next/
-backend/test/bin/
-backend/test/include/
-backend/test/lib/
-.env
-.venv
+backend/test/
+venv
 Lib/site-packages/
 Scripts/
+pyvenv.cfg
+test.py

@@ -265,12 +265,12 @@ export default function Home() {
                 transition: { delay: 0, duration: 1 },
               }}
             >
-              <InfoWidget stepNumber={4} title="4. Pick Arrival Date">
+              <InfoWidget stepNumber={4} title="4. Pick Return Date">
                 <div className="w-full h-[100px] font-sans mt-4">
                   <DateTimePicker
                     value={selectedArrivalDate}
                     onChange={setSelectedArrivalDate}
-                    placeholder="Select Arrival Date"
+                    placeholder="Select Return Date"
                     className="w-full h-full"
                     containerClassName="w-full h-full font-baloo font-normal text-4xl"
                   />

@@ -240,47 +240,47 @@ def get_final_price(destination, origin, depDate, arrDate, depDateFlex, arrDateF
     return jsonify({"Departure": json_depart, "Return": json_return})
 
 
-@app.route('/getavgpricing/<origin>/<destination>/<depDate>/<arrDate>', methods=['GET'])
-def get_average_price(origin, destination, depDate, arrDate):
-    prompt_input = """
-    - You will be given a origin airport IATA code, a destination airport IATA code, a departure date, and an return date
-    - Your task is to determine the AVERAGE cost of a roundtrip airfare ticket with these three airlines - United, Southwest, and Delta - from the origin airport to the destination airport given that certain date range
-    - The date will be formatted YYYY-mm-dd, so you CAN DISREGARD THE YEAR
+# @app.route('/getavgpricing/<origin>/<destination>/<depDate>/<arrDate>', methods=['GET'])
+# def get_average_price(origin, destination, depDate, arrDate):
+#     prompt_input = """
+#     - You will be given a origin airport IATA code, a destination airport IATA code, a departure date, and an return date
+#     - Your task is to determine the AVERAGE cost of a roundtrip airfare ticket with these three airlines - United, Southwest, and Delta - from the origin airport to the destination airport given that certain date range
+#     - The date will be formatted YYYY-mm-dd, so you CAN DISREGARD THE YEAR
 
-    Your response should look like this:
-    - United: roughly $(estimated price)
-    - Southwest: roughly $(estimated price)
-    - Delta: roughly $(estimated price)
+#     Your response should look like this:
+#     - United: roughly $(estimated price)
+#     - Southwest: roughly $(estimated price)
+#     - Delta: roughly $(estimated price)
 
 
-    So in total you should have 3 output statements and keep it to one sentence. Please add around $100 to each of the these values.
-    """
+#     So in total you should have 3 output statements and keep it to one sentence.
+#     """
 
-    user_input = rf'''
-    - Origin airport: {origin}
-    - Destination airport: {destination}
-    - Departure date: {depDate}
-    - Return date: {arrDate} 
+#     user_input = rf'''
+#     - Origin airport: {origin}
+#     - Destination airport: {destination}
+#     - Departure date: {depDate}
+#     - Return date: {arrDate} 
 
-    '''
-    client = OpenAI(api_key=openai_api_key)
+#     '''
+#     client = OpenAI(api_key=openai_api_key)
 
-    response = client.chat.completions.create(model="gpt-3.5-turbo",
-                                              messages=[
-                                                  # Use the formatted prompt
-                                                  {"role": "system",
-                                                    "content": prompt_input},
-                                                  {"role": "user",
-                                                   "content": user_input}
-                                              ],
-                                              temperature=0.2,
-                                              top_p=1,
-                                              frequency_penalty=0.0,
-                                              presence_penalty=0.2)
+#     response = client.chat.completions.create(model="gpt-3.5-turbo",
+#                                               messages=[
+#                                                   # Use the formatted prompt
+#                                                   {"role": "system",
+#                                                     "content": prompt_input},
+#                                                   {"role": "user",
+#                                                    "content": user_input}
+#                                               ],
+#                                               temperature=0.2,
+#                                               top_p=1,
+#                                               frequency_penalty=0.0,
+#                                               presence_penalty=0.2)
 
-    resp = response.choices[0].message.content
-    # print(resp)
-    return jsonify({"response": resp})
+#     resp = response.choices[0].message.content
+#     # print(resp)
+#     return jsonify({"response": resp})
 
 
 def getHotels(dest, checkin, checkout):
@@ -394,5 +394,4 @@ def get_image(hotel_name):
 # print(get_average_price("DFW", "BOS", "2024-02-05", "2024-02-12"))
 # print("You pay: " + str(cheapest))
 if __name__ == '__main__':
-    print("WTFFFFFFFFFFFFFF")
     app.run(host='127.0.0.1', port=3000)
